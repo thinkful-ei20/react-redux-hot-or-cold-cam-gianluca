@@ -1,43 +1,48 @@
 import React from 'react';
 
 import './guess-form.css';
+import { connect } from 'react-redux';
+import { updateGuess, makeGuess } from '../actions';
 
-export default class GuessForm extends React.Component {
-  onSubmit(event) {
-    event.preventDefault();
+function GuessForm(props) {
 
-    if (this.props.onMakeGuess) {
-      const value = this.input.value;
-      this.props.onMakeGuess(value);
-    }
-    this.input.value = '';
-    this.input.focus();
-  }
+	const onSubmit = (event) => {
+		event.preventDefault();
+		if (props.guess) {
+			props.dispatch(makeGuess(props.guess));
+		}
+		props.dispatch(updateGuess(''));
+	};
 
-  render() {
-    return (
-      <form onSubmit={e => this.onSubmit(e)}>
-        <input
-          type="number"
-          name="userGuess"
-          id="userGuess"
-          className="text"
-          min="1"
-          max="100"
-          autoComplete="off"
-          aria-labelledby="feedback"
-          ref={input => (this.input = input)}
-          required
-        />
-        <button 
-          type="submit"
-          name="submit"
-          id="guessButton" 
-          className="button"
-        >
-          Guess
-        </button>
-      </form>
-    );
-  }
+	return (
+		<form onSubmit={e => onSubmit(e)}>
+			<input
+				type="number"
+				name="userGuess"
+				id="userGuess"
+				className="text"
+				min="1"
+				max="100"
+				autoComplete="off"
+				aria-labelledby="feedback"
+				onChange={e => props.dispatch(updateGuess(e.target.value))}
+				value={props.guess}
+				required
+			/>
+			<button
+				type="submit"
+				name="submit"
+				id="guessButton"
+				className="button"
+			>
+		Guess
+			</button>
+		</form>
+	);
 }
+
+const mapStateToProps = state => ({
+	guess: state.guess
+});
+
+export default connect(mapStateToProps)(GuessForm);
