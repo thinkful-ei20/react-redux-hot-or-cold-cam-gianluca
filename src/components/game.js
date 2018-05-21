@@ -72,7 +72,6 @@ export function Game (props) {
 	return (
 		<div>
 			<Header
-				onRestartGame={() => this.restartGame()}
 				onGenerateAuralUpdate={() => this.generateAuralUpdate()}
 			/>
 			<main role="main">
