@@ -23,7 +23,6 @@ export const makeGuess = guess => ({
 });
 
 export const UPDATE_AURAL = 'UPDATE_AURAL';
-export const generateAuralUpdate = auralState => ({
-	type:UPDATE_AURAL,
-	auralState
+export const generateAuralUpdate = () => ({
+	type:UPDATE_AURAL
 });
