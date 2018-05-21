@@ -7,9 +7,9 @@ import AuralStatus from './aural-status';
 export default function StatusSection(props) {
   return (
     <section aria-labelledby="guessCount" aria-describedby="guessList">
-      <GuessCount />
-      <GuessList />
-      <AuralStatus />
+      <GuessCount/>
+      <GuessList/>
+      <AuralStatus/>
     </section>
   );
 }

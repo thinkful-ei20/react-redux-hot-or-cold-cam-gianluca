@@ -10,8 +10,8 @@ function GuessForm(props) {
 		event.preventDefault();
 		if (props.guess) {
 			props.dispatch(makeGuess(props.guess));
+			props.dispatch(updateGuess(''));
 		}
-		props.dispatch(updateGuess(''));
 	};
 
 	return (

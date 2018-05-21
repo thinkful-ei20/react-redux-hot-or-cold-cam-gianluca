@@ -29,7 +29,8 @@ export function Feedback(props) {
 
 export const mapStateToProps = state => {
   return {
-    feedback: state.feedback
+	feedback: state.feedback,
+	guessCount: state.guesses.length
   }
 }
 

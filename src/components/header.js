@@ -7,7 +7,7 @@ import './header.css';
 export default function Header(props) {
   return (
     <header>
-      <TopNav />
+      <TopNav/>
       <h1>HOT or COLD</h1>
     </header>
   );
